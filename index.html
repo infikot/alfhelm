@@ -63,9 +63,9 @@
             flex: 1;
             display: flex;
             justify-content: center;
-            align-items: flex-start; /* Выравнивание по верху, чтобы контролировать отступы вручную */
+            align-items: flex-start;
             width: 100%;
-            padding-top: 100px; /* Общий отступ от верха страницы */
+            padding-top: 100px;
             padding-bottom: 40px;
         }
 
@@ -84,10 +84,10 @@
             align-items: center;
             position: relative;
             
-            /* Сдвигаем круг вниз, но не так сильно, как оплату */
+            /* Сдвиг вниз */
             margin-top: 40px; 
             
-            /* Увеличиваем визуально (как ты просил про 1.5 раза, но аккуратно) */
+            /* Масштабирование */
             transform: scale(1.15); 
         }
 
@@ -106,7 +106,8 @@
 
         .circle-frame {
             width: 100%;
-            height: 1010px; 
+            /* Твоя высота */
+            height: 410px; 
             border: none;
             overflow: hidden; 
         }
@@ -115,14 +116,13 @@
         .action-col {
             display: flex;
             justify-content: center;
-            
-            /* Опускаем оплату ЕЩЁ ниже, чтобы круг оказался визуально "чуть выше" */
             margin-top: 160px; 
         }
 
         .payment-card {
             width: 100%;
-            max-width: 620px;
+            /* Твоя ширина */
+            max-width: 620px; 
             background: var(--glass-bg);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
@@ -188,11 +188,10 @@
                 gap: 0px;
             }
             
-            /* На мобилке убираем сложные отступы, ставим друг под другом */
             .visual-col {
                 margin-top: 0;
                 transform: scale(1);
-                margin-bottom: -50px; /* Подтягиваем оплату ближе к кругу */
+                margin-bottom: -50px; 
             }
             
             .action-col {
@@ -200,7 +199,7 @@
             }
 
             .circle-frame {
-                height: 480px; 
+                height: 480px; /* На мобилке лучше оставить побольше, там верстка другая */
             }
         }
     </style>
@@ -216,10 +215,12 @@
             
             <!-- Левая часть: Круг -->
             <div class="visual-col">
+                <!-- ДОБАВИЛ referrerpolicy="no-referrer" ЧТОБЫ УБРАТЬ 404 -->
                 <iframe 
                     class="circle-frame"
                     src="https://widget.donatepay.ru/widgets/page/eb4d5646237d97b2201d3405ea79de346a3cb49faab49d64fe1bdbe6e56bd901?widget_id=7271568" 
-                    scrolling="no">
+                    scrolling="no"
+                    referrerpolicy="no-referrer">
                 </iframe>
             </div>
 
@@ -229,7 +230,8 @@
                     <iframe 
                         class="payment-frame"
                         src="https://widget.donatepay.ru/widgets/page/eb4d5646237d97b2201d3405ea79de346a3cb49faab49d64fe1bdbe6e56bd901?widget_id=7271652&sum=50" 
-                        scrolling="no">
+                        scrolling="no"
+                        referrerpolicy="no-referrer">
                     </iframe>
                 </div>
             </div>
