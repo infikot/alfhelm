@@ -1,1 +1,246 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alfhelm | Donation</title>
+    <link rel="icon" type="image/png" href="assets/alfhelm.png">
 
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-dark: #050505;
+            --accent-red: #d90429;
+            --glass-bg: rgba(22, 22, 22, 0.6);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --text-white: #eeeeee;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            background: radial-gradient(circle at 50% 50%, #1a0808 0%, #000000 90%);
+            color: var(--text-white);
+            font-family: 'Montserrat', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* --- ЛОГОТИП --- */
+        .brand-header {
+            position: absolute;
+            top: 30px;
+            left: 40px;
+            z-index: 10;
+        }
+
+        .logo {
+            width: 70px;
+            height: 70px;
+            object-fit: contain;
+            filter: drop-shadow(0 0 15px rgba(217, 4, 41, 0.5));
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.1);
+        }
+
+        /* --- ОСНОВНАЯ СЦЕНА --- */
+        .main-stage {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start; /* Выравнивание по верху, чтобы контролировать отступы вручную */
+            width: 100%;
+            padding-top: 100px; /* Общий отступ от верха страницы */
+            padding-bottom: 40px;
+        }
+
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            max-width: 1100px;
+            width: 100%;
+        }
+
+        /* --- ЛЕВАЯ КОЛОНКА (КРУГ) --- */
+        .visual-col {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            
+            /* Сдвигаем круг вниз, но не так сильно, как оплату */
+            margin-top: 40px; 
+            
+            /* Увеличиваем визуально (как ты просил про 1.5 раза, но аккуратно) */
+            transform: scale(1.15); 
+        }
+
+        /* Свечение */
+        .visual-col::before {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: var(--accent-red);
+            filter: blur(130px);
+            opacity: 0.15;
+            z-index: -1;
+            border-radius: 50%;
+        }
+
+        .circle-frame {
+            width: 100%;
+            height: 410px; 
+            border: none;
+            overflow: hidden; 
+        }
+
+        /* --- ПРАВАЯ КОЛОНКА (ОПЛАТА) --- */
+        .action-col {
+            display: flex;
+            justify-content: center;
+            
+            /* Опускаем оплату ЕЩЁ ниже, чтобы круг оказался визуально "чуть выше" */
+            margin-top: 160px; 
+        }
+
+        .payment-card {
+            width: 100%;
+            max-width: 420px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 10px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+            transition: transform 0.3s ease;
+        }
+
+        .payment-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .payment-frame {
+            width: 100%;
+            height: 240px;
+            border: none;
+            border-radius: 16px;
+        }
+
+        /* --- ФУТЕР --- */
+        footer {
+            padding: 20px;
+            text-align: center;
+            font-size: 0.8rem;
+            color: #555;
+            position: relative;
+            z-index: 5;
+        }
+
+        footer a {
+            color: #777;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+            margin: 0 5px;
+        }
+
+        footer a:hover {
+            color: var(--accent-red);
+        }
+
+        /* --- АДАПТИВНОСТЬ --- */
+        @media (max-width: 900px) {
+            .brand-header {
+                position: relative;
+                top: 0;
+                left: 0;
+                display: flex;
+                justify-content: center;
+                margin-top: 20px;
+                width: 100%;
+            }
+            
+            .main-stage {
+                padding-top: 20px;
+            }
+
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+                gap: 0px;
+            }
+            
+            /* На мобилке убираем сложные отступы, ставим друг под другом */
+            .visual-col {
+                margin-top: 0;
+                transform: scale(1);
+                margin-bottom: -50px; /* Подтягиваем оплату ближе к кругу */
+            }
+            
+            .action-col {
+                margin-top: 0;
+            }
+
+            .circle-frame {
+                height: 480px; 
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="brand-header">
+        <img src="assets/alfhelm.png" alt="Logo" class="logo">
+    </header>
+
+    <main class="main-stage">
+        <div class="dashboard-grid">
+            
+            <!-- Левая часть: Круг -->
+            <div class="visual-col">
+                <iframe 
+                    class="circle-frame"
+                    src="https://widget.donatepay.ru/widgets/page/eb4d5646237d97b2201d3405ea79de346a3cb49faab49d64fe1bdbe6e56bd901?widget_id=7271568" 
+                    scrolling="no">
+                </iframe>
+            </div>
+
+            <!-- Правая часть: Оплата -->
+            <div class="action-col">
+                <div class="payment-card">
+                    <iframe 
+                        class="payment-frame"
+                        src="https://widget.donatepay.ru/widgets/page/eb4d5646237d97b2201d3405ea79de346a3cb49faab49d64fe1bdbe6e56bd901?widget_id=7271652&sum=50" 
+                        scrolling="no">
+                    </iframe>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer>
+        by <a href="https://t.me/infikot" target="_blank">@infikot</a> 
+        to <a href="https://t.me/alfhelmrp" target="_blank">Alfhelm</a>
+    </footer>
+
+</body>
+</html>
