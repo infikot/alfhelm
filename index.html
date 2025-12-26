@@ -38,6 +38,29 @@
             position: relative;
         }
 
+        /* Делаем поля ввода черными с белым текстом */
+        .form-control, textarea {
+            background-color: #0a0a0a !important; /* Черный фон */
+            color: #ffffff !important; /* Белый текст */
+            border: 1px solid #333 !important; /* Темная рамка */
+        }
+        
+        /* Цвет плейсхолдера (текст подсказки), чтобы было видно */
+        ::placeholder {
+            color: #888 !important;
+        }
+        
+        /* Делаем текст снизу белым */
+        .descr, .descr a {
+            color: #ffffff !important;
+            text-shadow: none !important;
+        }
+        
+        /* Скрываем белый фон у самой формы, если он там есть */
+        body {
+            background: transparent !important;
+        }
+        
         /* --- ЛОГОТИП --- */
         .brand-header {
             position: absolute;
