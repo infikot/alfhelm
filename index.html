@@ -83,15 +83,11 @@
             justify-content: center;
             align-items: center;
             position: relative;
-            
-            /* Сдвиг вниз */
             margin-top: 40px; 
-            
-            /* Масштабирование */
             transform: scale(1.15); 
+            z-index: 1;
         }
 
-        /* Свечение */
         .visual-col::before {
             content: '';
             position: absolute;
@@ -106,7 +102,6 @@
 
         .circle-frame {
             width: 100%;
-            /* Твоя высота */
             height: 410px; 
             border: none;
             overflow: hidden; 
@@ -117,11 +112,11 @@
             display: flex;
             justify-content: center;
             margin-top: 160px; 
+            z-index: 2;
         }
 
         .payment-card {
             width: 100%;
-            /* Твоя ширина */
             max-width: 620px; 
             background: var(--glass-bg);
             backdrop-filter: blur(20px);
@@ -199,7 +194,7 @@
             }
 
             .circle-frame {
-                height: 480px; /* На мобилке лучше оставить побольше, там верстка другая */
+                height: 480px;
             }
         }
     </style>
@@ -213,9 +208,8 @@
     <main class="main-stage">
         <div class="dashboard-grid">
             
-            <!-- Левая часть: Круг -->
+            <!-- ЛЕВЫЙ: С хаком (работает для отображения) -->
             <div class="visual-col">
-                <!-- ДОБАВИЛ referrerpolicy="no-referrer" ЧТОБЫ УБРАТЬ 404 -->
                 <iframe 
                     class="circle-frame"
                     src="https://widget.donatepay.ru/widgets/page/eb4d5646237d97b2201d3405ea79de346a3cb49faab49d64fe1bdbe6e56bd901?widget_id=7271568" 
@@ -224,14 +218,13 @@
                 </iframe>
             </div>
 
-            <!-- Правая часть: Оплата -->
+            <!-- ПРАВЫЙ: БЕЗ хака (нужен белый список доменов) -->
             <div class="action-col">
                 <div class="payment-card">
                     <iframe 
                         class="payment-frame"
                         src="https://widget.donatepay.ru/widgets/page/eb4d5646237d97b2201d3405ea79de346a3cb49faab49d64fe1bdbe6e56bd901?widget_id=7271652&sum=50" 
-                        scrolling="no"
-                        referrerpolicy="no-referrer">
+                        scrolling="no">
                     </iframe>
                 </div>
             </div>
